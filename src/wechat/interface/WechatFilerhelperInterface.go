@@ -209,7 +209,7 @@ func (wechatFileHelper *WechatFileHelper) ProcessMessage() bool {
 
 				_, downloadBytes := GET(wechatFileHelper, downLoadImgUri)
 				filename := time.Now().Format("20060102150405") + "_" + GetRandomString(6) + ".jpg"
-				ioutil.WriteFile("E:\\罗宾阿里云盘\\微信文件助手\\图片\\"+filename, downloadBytes, 0777)
+				ioutil.WriteFile("E:\\阿里云盘\\微信文件助手\\图片\\"+filename, downloadBytes, 0777)
 				//ioutil.WriteFile("./"+filename, downloadBytes, 0777)
 
 				wechatFileHelper.SendTextMessage("图片" + filename + "已保存！")
@@ -231,7 +231,7 @@ func (wechatFileHelper *WechatFileHelper) ProcessMessage() bool {
 
 				_, downloadBytes := GET(wechatFileHelper, downLoadImgUri)
 				filename := time.Now().Format("20060102150405") + "_" + GetRandomString(6) + ".mp4"
-				ioutil.WriteFile("E:\\罗宾阿里云盘\\微信文件助手\\视频\\"+filename, downloadBytes, 0777)
+				ioutil.WriteFile("E:\\阿里云盘\\微信文件助手\\视频\\"+filename, downloadBytes, 0777)
 				//ioutil.WriteFile("./"+filename, downloadBytes, 0777)
 
 				wechatFileHelper.SendTextMessage("视频" + filename + "已保存！")
@@ -249,7 +249,7 @@ func (wechatFileHelper *WechatFileHelper) ProcessMessage() bool {
 				}
 				_, downloadBytes := GET(wechatFileHelper, downLoadFileUri)
 				filename := time.Now().Format("20060102150405") + "_" + xSync.FileName
-				ioutil.WriteFile("E:\\罗宾阿里云盘\\微信文件助手\\文件\\"+filename, downloadBytes, 0777)
+				ioutil.WriteFile("E:\\阿里云盘\\微信文件助手\\文件\\"+filename, downloadBytes, 0777)
 				//ioutil.WriteFile("./"+filename, downloadBytes, 0777)
 				wechatFileHelper.SendTextMessage("文件" + filename + "已保存！")
 
