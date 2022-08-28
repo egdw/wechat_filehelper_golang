@@ -209,8 +209,8 @@ func (wechatFileHelper *WechatFileHelper) ProcessMessage() bool {
 
 				_, downloadBytes := GET(wechatFileHelper, downLoadImgUri)
 				filename := time.Now().Format("20060102150405") + "_" + GetRandomString(6) + ".jpg"
-				//ioutil.WriteFile("E:\\罗宾阿里云盘\\微信文件助手\\图片\\"+filename, downloadBytes, 0777)
-				ioutil.WriteFile("./"+filename, downloadBytes, 0777)
+				ioutil.WriteFile("E:\\罗宾阿里云盘\\微信文件助手\\图片\\"+filename, downloadBytes, 0777)
+				//ioutil.WriteFile("./"+filename, downloadBytes, 0777)
 
 				wechatFileHelper.SendTextMessage("图片" + filename + "已保存！")
 				break
@@ -231,10 +231,10 @@ func (wechatFileHelper *WechatFileHelper) ProcessMessage() bool {
 
 				_, downloadBytes := GET(wechatFileHelper, downLoadImgUri)
 				filename := time.Now().Format("20060102150405") + "_" + GetRandomString(6) + ".mp4"
-				//ioutil.WriteFile("E:\\罗宾阿里云盘\\微信文件助手\\视频\\"+filename, downloadBytes, 0777)
-				ioutil.WriteFile("./"+filename, downloadBytes, 0777)
+				ioutil.WriteFile("E:\\罗宾阿里云盘\\微信文件助手\\视频\\"+filename, downloadBytes, 0777)
+				//ioutil.WriteFile("./"+filename, downloadBytes, 0777)
 
-				wechatFileHelper.SendTextMessage("图片" + filename + "已保存！")
+				wechatFileHelper.SendTextMessage("视频" + filename + "已保存！")
 
 				break
 			case 49: //file
@@ -249,8 +249,8 @@ func (wechatFileHelper *WechatFileHelper) ProcessMessage() bool {
 				}
 				_, downloadBytes := GET(wechatFileHelper, downLoadFileUri)
 				filename := time.Now().Format("20060102150405") + "_" + xSync.FileName
-				//ioutil.WriteFile("E:\\罗宾阿里云盘\\微信文件助手\\文件\\"+filename, downloadBytes, 0777)
-				ioutil.WriteFile("./"+filename, downloadBytes, 0777)
+				ioutil.WriteFile("E:\\罗宾阿里云盘\\微信文件助手\\文件\\"+filename, downloadBytes, 0777)
+				//ioutil.WriteFile("./"+filename, downloadBytes, 0777)
 				wechatFileHelper.SendTextMessage("文件" + filename + "已保存！")
 
 				break
@@ -323,7 +323,7 @@ func (wechatFileHelper *WechatFileHelper) SyncCheck() { //同步数据
 			} else {
 				println("获取同步消息异常：" + syncheckBody)
 			}
-			time.Sleep(3 * time.Second) //3秒请求一次
+			time.Sleep(30 * time.Second) //30秒请求一次
 		}
 	}()
 }
