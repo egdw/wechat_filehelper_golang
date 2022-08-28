@@ -23,6 +23,15 @@ type BaseRequestBody struct {
 	} `json:"BaseRequest"`
 }
 
+type SzFileBaseRequestBody struct {
+	SzBaseRequest struct {
+		Uin      string `json:"Uin"`
+		Sid      string `json:"Sid"`
+		Skey     string `json:"Skey"`
+		DeviceId string `json:"DeviceId"`
+	} `json:"BaseRequest"`
+}
+
 type WebwxInitRetBody struct {
 	SyncKey struct {
 		Count int `json:"Count"`
@@ -31,6 +40,7 @@ type WebwxInitRetBody struct {
 			Val int `json:"Val"`
 		} `json:"List"`
 	} `json:"SyncKey"`
+	SKey string `json:"SKey"`
 	User struct {
 		UserName   string `json:"UserName"`
 		NickName   string `json:"NickName"`

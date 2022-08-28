@@ -7,6 +7,47 @@ import (
 	"strings"
 )
 
+func GET_new_header(wechatFileHelper *WechatFileHelper, url string) (string, []byte, string, string, string, string) {
+	req, err := http.NewRequest("GET", url, nil)
+	if err != nil {
+		panic(err)
+	}
+	req.Header = http.Header{
+		"mmweb_appid": {"wx_webfilehelper"},
+	}
+	response, err := wechatFileHelper.Client.Do(req)
+	defer response.Body.Close()
+	if err != nil {
+		println(err.Error())
+	}
+	body, err := ioutil.ReadAll(response.Body)
+	if err != nil {
+		println(err.Error())
+	}
+	webwx_auth_ticket := ""
+	webwx_data_ticket := ""
+	wxuin := ""
+	wxsid := ""
+	response.Request.Response.Header.Get("Cookie")
+	for _, cookie := range response.Request.Response.Cookies() {
+		if cookie.Name == "webwx_auth_ticket" {
+			webwx_auth_ticket = cookie.Value
+		}
+		if cookie.Name == "webwx_data_ticket" {
+			webwx_data_ticket = cookie.Value
+		}
+		if cookie.Name == "wxuin" {
+			wxuin = cookie.Value
+		}
+		if cookie.Name == "wxsid" {
+			wxsid = cookie.Value
+		}
+	}
+
+	return string(body), body, webwx_auth_ticket, webwx_data_ticket, wxuin, wxsid
+
+}
+
 func GET(wechatFileHelper *WechatFileHelper, url string) (string, []byte) {
 	req, err := http.NewRequest("GET", url, nil)
 	if err != nil {
